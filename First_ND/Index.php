@@ -16,12 +16,24 @@ if(isset($_SESSION['logged in']))
 ?>
 
 <html>
-<form method="get" action="Login.php">
-    <input id="login" name="login" type="text">
-    <label>User name: </label>
-    <input id="pass" name="pass" type="password">
-    <label>Password: </label>
-    <input name="submit" type="submit" value="Login">
-</form>
-<a href="register.php">New user? Click here to register</a>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/styles.css">
+		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+	</head>
+	<body>
+		<header>T.E.T.A.</br> Semester Project</header>
+		<div id="container">
+			<form method="get" action="Login.php">
+				<label for="login">Username:</label>
+			    <input id="login" name="login" type="text"></br>
+			    <label for="pass">Password:</label>
+			    <input id="pass" name="pass" type="password">
+			    <div id="lower">
+			    	<input type="checkbox"><label for="checkbox">Keep me loged in</label>
+			    	<input name="submit" type="submit" value="Login">			    	
+			    </div>
+			</form>
+			<a class="reg" href="register.php">Register</a>
+		</div>
+	</body>
 </html>
