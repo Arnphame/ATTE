@@ -21,7 +21,7 @@ if(isset($_SESSION['logged in']))
 		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
 	</head>
 	<body>
-		<header>T.E.T.A.</br> Semester Project</header>
+		<header>A.T.T.E.</br> Semester Project</header>
 		<div id="container">
 			<form method="get" action="Login.php">
 				<label for="login">Username:</label>
@@ -29,11 +29,12 @@ if(isset($_SESSION['logged in']))
 			    <label for="pass">Password:</label>
 			    <input id="pass" name="pass" type="password">
 			    <div id="lower">
-			    	<input type="checkbox"><label for="checkbox">Keep me loged in</label>
+			    	<!--<input type="checkbox"><label for="checkbox">Keep me loged in</label>-->
 			    	<input name="submit" type="submit" value="Login">			    	
 			    </div>
 			</form>
 			<a class="reg" href="register.php">Register</a>
+			<!--<a class="reg" href="forgot.php" style="position: fixed; margin-left: 190px;">Forgot password?</a>-->
 		</div>
 	</body>
 </html>

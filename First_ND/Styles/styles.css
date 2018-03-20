@@ -59,6 +59,30 @@ header{
 	color: #444;
 }
 
+a.reg:hover{
+    color: #FFF;
+    transition: 1s;
+    margin-top: 1.5%;
+}
+
+.signup{
+    font-size: 70px; 
+    position: fixed; 
+    margin-top: 400px; 
+    margin-left: 430px; 
+    color: #FFF;
+    font-family: 'Amaranth';
+    font-weight: bold;
+    text-decoration: none;
+    -webkit-animation: fadein 4s;
+}
+
+a.signup:hover{
+    color: #444;
+    margin-top: 380px;
+    transition: 1s;
+}
+
 
 html, body {   
  	width: 100%;   
@@ -67,6 +91,7 @@ html, body {
 	color: #444;   
 	-webkit-font-smoothing: antialiased;    
 	background: #39ac39;
+    overflow: hidden;
 }
 
 p a {
