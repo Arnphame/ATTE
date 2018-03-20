@@ -19,7 +19,7 @@ if ($rows == 0)
         $insert = mysqli_query($con, "INSERT INTO user (login, password) VALUES ('$login','$hashed_password')");
         ?> 
         <html> 
-            <link rel="stylesheet" type="text/css" href="/styles.css">
+            <link rel="stylesheet" type="text/css" href="Styles/styles.css">
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
             <header>Your registration is complete.</header> 
         </html> <?php
@@ -32,7 +32,7 @@ else
 ?>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" type="text/css" href="Styles/styles.css">
         <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
     <a class="signup" href="Index.php">Back to login page</a>

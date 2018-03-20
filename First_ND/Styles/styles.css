@@ -1,12 +1,16 @@
 /* --- Positioning --- */
 #container {
 	position: fixed;
-	width: 340px;
-	height: 275px;
+	/*width: 340px;*/
+    width: 25%;
+	/*height: 275px;*/
+    height: 34.3%;
 	top: 50%;
 	left: 50%;
-	margin-top: -70px;
-	margin-left: -170px;
+	/*margin-top: -70px;*/
+    margin-top: -4%;
+	/*margin-left: -170px;*/
+    margin-left: -12%;
 	/* ---- styling ---- */
 	background: #fff;
     border-radius: 3px;
@@ -17,12 +21,16 @@
 
 #container_signup{
     position: fixed;
-    width: 340px;
-    height: 290px;
+    /*width: 340px;
+    height: 290px;*/
+    width: 25%;
+    height: 44.7%;
     top: 50%;
     left: 50%;
-    margin-top: -70px;
-    margin-left: -170px;
+    /*margin-top: -70px;
+    margin-left: -170px;*/
+    margin-top: -5%;
+    margin-left: -11.9%;
     /* ---- styling ---- */
     background: #fff;
     border-radius: 3px;
@@ -68,8 +76,10 @@ a.reg:hover{
 .signup{
     font-size: 70px; 
     position: fixed; 
-    margin-top: 400px; 
-    margin-left: 430px; 
+    /*margin-top: 400px; */
+    margin-top: 27%;
+    /*margin-left: 430px; */
+    margin-left: 30%;
     color: #FFF;
     font-family: 'Amaranth';
     font-weight: bold;
@@ -79,7 +89,8 @@ a.reg:hover{
 
 a.signup:hover{
     color: #444;
-    margin-top: 380px;
+    /*margin-top: 380px;*/
+    margin-top: 26%;
     transition: 1s;
 }
 
