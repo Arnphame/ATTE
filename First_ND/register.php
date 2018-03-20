@@ -1,10 +1,14 @@
 <html>
 	<head>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="/styles.css">
 =======
 		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
 >>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
+=======
+		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
+>>>>>>> 13ca003cbf40e4770e4b78bb3b9deb431d5b3a1d
 		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
 	</head>
 	<header>Registration</header>
