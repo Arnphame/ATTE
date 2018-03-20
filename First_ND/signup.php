@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
 $con = mysqli_connect("localhost", "arn", "123", "users");
 
 $login = $_GET['login'];
@@ -9,7 +12,10 @@ $pass2 = $_GET['pass2'];
 $check = mysqli_query($con, "SELECT login FROM user WHERE login='$login'");
 $rows = mysqli_num_rows($check);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
 if ($rows == 0)
 {
     if ($pass != $pass2)
@@ -20,19 +26,30 @@ if ($rows == 0)
         $insert = mysqli_query($con, "INSERT INTO user (login, password) VALUES ('$login','$hashed_password')");
         ?> 
         <html> 
+<<<<<<< HEAD
             <link rel="stylesheet" type="text/css" href="/styles.css">
+=======
+            <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+>>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
             <header>Your registration is complete.</header> 
         </html> <?php
     }
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
 else
 {
     header("Location:register.php");
 }
 ?>
 <html>
+<<<<<<< HEAD
 <<<<<<< 13613a135fce884aa39d0bfd3af71a057a8bd216
+=======
+>>>>>>> 20f2d7963c7504fafd39241e5284d065e0058737
     <head>
         <link rel="stylesheet" type="text/css" href="/styles.css">
         <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
