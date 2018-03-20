@@ -17,7 +17,7 @@ if(isset($_SESSION['logged in']))
 
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="/styles.css">
+		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
 		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
 	</head>
 	<body>

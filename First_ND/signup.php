@@ -9,6 +9,7 @@ $pass2 = $_GET['pass2'];
 $check = mysqli_query($con, "SELECT login FROM user WHERE login='$login'");
 $rows = mysqli_num_rows($check);
 
+
 if ($rows == 0)
 {
     if ($pass != $pass2)
@@ -31,6 +32,7 @@ else
 }
 ?>
 <html>
+<<<<<<< 13613a135fce884aa39d0bfd3af71a057a8bd216
     <head>
         <link rel="stylesheet" type="text/css" href="/styles.css">
         <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
