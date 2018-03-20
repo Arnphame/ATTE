@@ -11,10 +11,17 @@ class User
     private $name;
     private $password;
 
-    public function __construct($name, $password)
+    private $gender;
+    private $dateOfBirth;
+    private $transport;
+
+    public function __construct($name, $password, $gender, $dateOfBirth, $transport)
     {
         $this->name = $name;
         $this->password = $password;
+        $this->gender = $gender;
+        $this->dateOfBirth = $dateOfBirth;
+        $this->transport = $transport;
     }
 
     public function GetName()

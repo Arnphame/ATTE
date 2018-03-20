@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 2018 m. Kov 18 d. 17:35
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.25-0ubuntu0.16.04.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 20, 2018 at 11:16 AM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,43 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Sukurta duomenų struktūra lentelei `user`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `login` text NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `gender` text,
+  `age` text,
+  `transport` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Sukurta duomenų kopija lentelei `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `login`, `password`) VALUES
-(1, 'Arn', '321'),
-(2, 'abc', '$2y$10$j2Cta9C/atB9LRfLBeurFu6t8VlLJDtA/wxYVYFQNjjaQQMx4rEti'),
-(3, 'Arnas', '$2y$10$e7vT761z3MZs1kXPAM4BhefMPHv9U2WOZTnpOEGCT3qmBJyhhRS.q');
+INSERT INTO `user` (`id`, `login`, `password`, `gender`, `age`, `transport`) VALUES
+(1, 'Arn', '321', NULL, NULL, NULL),
+(2, 'abc', '$2y$10$j2Cta9C/atB9LRfLBeurFu6t8VlLJDtA/wxYVYFQNjjaQQMx4rEti', NULL, NULL, NULL),
+(3, 'Arnas', '$2y$10$e7vT761z3MZs1kXPAM4BhefMPHv9U2WOZTnpOEGCT3qmBJyhhRS.q', NULL, NULL, NULL);
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

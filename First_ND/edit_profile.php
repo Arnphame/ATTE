@@ -1,11 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: arnas
- * Date: 18.3.18
- * Time: 16.21
+ * User: MSi
+ * Date: 2018-03-20
+ * Time: 11:23 AM
  */
-
 
 $con = mysqli_connect("localhost", "arn", "123", "users");
 
@@ -21,16 +20,9 @@ if(!isset($login_session))
     header("Location:Index.php");
 }
 
-
 mysqli_close($con);
-
 ?>
 
 <html>
-<div>
-    Welcome <?php echo $login_session; ?>
-    <a href="logout.php">Log Out</a>
-    <a href="edit_profile.php">Edit Your profile</a>
-</div>
-
+That's gonna be a fully functional edit page soon...
 </html>
