@@ -19,9 +19,9 @@ if ($rows == 0)
         $_SESSION['error'] = "Passwords do not match";
         header("Location:register.php");
     }
-    else if($pass == "" || $pass2 == "")
+    else if($pass == "" || $pass2 == "" || $login == "")
     {
-        $_SESSION['error'] = "Enter your password";
+        $_SESSION['error'] = "Fill all data";
         header("Location:register.php");
     }
     else
@@ -37,6 +37,8 @@ else
     $_SESSION['error'] = "Username is already taken";
     header("Location:register.php");
 }
+
+
 ?>
 
 <html>

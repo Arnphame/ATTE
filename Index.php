@@ -19,7 +19,6 @@ else
 
 session_destroy();
 ?>
-
 <html>
 <form method="post" action="Login.php">
     <label>User name: </label>

@@ -19,3 +19,6 @@ else
 </form>
 </pre>
 </html>
+<html>
+<a href="Index.php">Back to login page </a>
+</html>
