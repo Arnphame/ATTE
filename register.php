@@ -14,8 +14,8 @@ else
     <label>Password: </label>
     <input id="pass2" name="pass2" type="password">
     <label>Retype password: </label>
-    <input name="submit" type="submit" value="Sign Up">
-    <span style="color: #FF0000"> <?php echo $errMsg?></span>
+    <input name="submit" type="submit" value="Sign Up"">
+   <!-- <span style="color: #FF0000">  <?php// echo $errMsg?></span>-->
 </form>
 </pre>
 </html>
