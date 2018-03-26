@@ -5,36 +5,28 @@
  * Date: 18.3.18
  * Time: 14.46
  */
-
+session_start();
 //include ('Login.php');
 
 if(isset($_SESSION['logged in']))
 {
     header("location: Profile.php");
 }
+if(empty($_SESSION['error']))
+    $errMsg = "";
+else
+    $errMsg = $_SESSION['error'];
 
+session_destroy();
 ?>
-
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
-		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-	</head>
-	<body>
-		<header>A.T.T.E.</br> Semester Project</header>
-		<div id="container">
-			<form method="get" action="Login.php">
-				<label for="login">Username:</label>
-			    <input id="login" name="login" type="text"></br>
-			    <label for="pass">Password:</label>
-			    <input id="pass" name="pass" type="password">
-			    <div id="lower">
-			    	<!--<input type="checkbox"><label for="checkbox">Keep me loged in</label>-->
-			    	<input name="submit" type="submit" value="Login">			    	
-			    </div>
-			</form>
-			<a class="reg" href="register.php">Register</a>
-			<!--<a class="reg" href="forgot.php" style="position: fixed; margin-left: 190px;">Forgot password?</a>-->
-		</div>
-	</body>
+<form method="post" action="Login.php">
+    <label>User name: </label>
+    <input id="login" name="login" type="text">
+    <label>Password: </label>
+    <input id="pass" name="pass" type="password">
+    <input name="submit" type="submit" value="Login"><br>
+    <span style="color: #FF0000"> <?php echo $errMsg?></span>
+</form>
+<a href="register.php">New user? Click here to register</a>
 </html>
