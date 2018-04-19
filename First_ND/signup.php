@@ -1,5 +1,4 @@
 <?php
-
 $con = mysqli_connect("localhost", "arn", "123", "users");
 
 $login = $_GET['login'];
@@ -8,7 +7,6 @@ $pass2 = $_GET['pass2'];
 
 $check = mysqli_query($con, "SELECT login FROM user WHERE login='$login'");
 $rows = mysqli_num_rows($check);
-
 if ($rows == 0)
 {
     if ($pass != $pass2)
@@ -24,7 +22,7 @@ if ($rows == 0)
             <header>Your registration is complete.</header> 
         </html> <?php
     }
-} 
+}
 else
 {
     header("Location:register.php");
