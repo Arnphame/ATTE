@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\Table(name="user")
  * @ORM\Entity
  * @UniqueEntity(fields="email", message="Email already taken")
  * @UniqueEntity(fields="username", message="Username already taken")
@@ -36,14 +37,38 @@ class User implements UserInterface
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
-
-    /**
      * @ORM\Column(type="string", length=64)
      */
     private $password;
+
+    /**
+     * User = 0; Admin = 1;
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $role;
+
+    /**
+     * Active = 1; inactive = 0;
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $isActive;
+
+    /**
+     * For email confirmation
+     * @ORM\Column(type="string", length=255)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phoneNumber;
+
 
     public function getEmail()
     {
@@ -65,16 +90,6 @@ class User implements UserInterface
         $this->username = $username;
     }
 
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
-
     public function getPassword()
     {
         return $this->password;
@@ -83,6 +98,46 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    public function getRole()
+    {
+        return $this->role;
+    }
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+    public function getToken()
+    {
+        return $this->token;
+    }
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+    public function getAddress()
+    {
+        return $this->address;
+    }
+    public function setPhoneNumber($number)
+    {
+        $this->phoneNumber = $number;
+    }
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+    public function setisActive($active)
+    {
+        $this->isActive = $active;
+    }
+    public function getisActive()
+    {
+        return $this->isActive;
     }
 
     public function getSalt()

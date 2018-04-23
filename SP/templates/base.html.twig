@@ -10,7 +10,9 @@
     <nav>
         <div class="navbar">
             <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
-            <a href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
+            <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
+            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
+            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
         </div>
     </nav>
     {% endblock %}
@@ -21,7 +23,8 @@
             <p>Footer</p>
         </div>
     </footer>
-    {% endblock %}}
-{% block javascripts %}{% endblock %}
+    {% endblock %}
+{% block javascripts %}
+{% endblock %}
     </body>
 </html>
