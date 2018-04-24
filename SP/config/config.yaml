@@ -1,0 +1,5 @@
+swiftmailer:
+    transport: gmail
+    host:      smtp.gmail.com
+    username:  ##
+    password:  ##
