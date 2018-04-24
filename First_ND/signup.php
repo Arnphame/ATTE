@@ -11,8 +11,6 @@ $pass2 = $_POST['pass2'];
 $check = mysqli_query($con, "SELECT login FROM user WHERE login='$login'");
 $rows = mysqli_num_rows($check);
 
-var_dump($rows);
-
 if ($rows == 0)
 {
     if ($pass != $pass2) {

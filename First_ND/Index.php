@@ -6,7 +6,6 @@
  * Time: 14.46
  */
 session_start();
-//include ('Login.php');
 
 if(isset($_SESSION['logged in']))
 {
@@ -20,13 +19,23 @@ else
 session_destroy();
 ?>
 <html>
-<form method="post" action="Login.php">
-    <label>User name: </label>
-    <input id="login" name="login" type="text">
-    <label>Password: </label>
-    <input id="pass" name="pass" type="password">
-    <input name="submit" type="submit" value="Login"><br>
-    <span style="color: #FF0000"> <?php echo $errMsg?></span>
-</form>
-<a href="register.php">New user? Click here to register</a>
+	<head>
+		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
+		<link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+	</head>
+	<body>
+		<header>A.T.T.E.</br> Semester Project</header>
+		<div id="container">
+			<form method="get" action="Login.php">
+				<label for="login">Username:</label>
+			    <input id="login" name="login" type="text"></br>
+			    <label for="pass">Password:</label>
+			    <input id="pass" name="pass" type="password">
+			    <div id="lower">
+			    	<input name="submit" type="submit" value="Login">
+			    </div>
+			</form>
+			<a class="reg" href="register.php">Register</a>
+		</div>
+	</body>
 </html>
