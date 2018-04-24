@@ -13,7 +13,7 @@
         "symfony/framework-bundle": "^3.4",
         "symfony/lts": "^3",
         "symfony/monolog-bundle": "^3.1",
-        "symfony/orm-pack": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/process": "^3.4",
         "symfony/security-bundle": "^3.4",
         "symfony/serializer-pack": "*",
@@ -72,7 +72,7 @@
     },
     "extra": {
         "symfony": {
-            "id": "",
+            "id": "01CBT7VDPY59FZ4R5PXRK93V9H",
             "allow-contrib": false
         },
         "symfony.id": "01CBFC6FGVZ6C7XR3PQQ9A7K6X"
