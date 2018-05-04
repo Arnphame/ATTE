@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,6 +13,7 @@
             <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
             <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
             <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
+            <a style="float:right" href=" {{ path('add_car') }}"> {{ 'My Cars' }}</a>
         </div>
     </nav>
     {% endblock %}
@@ -20,6 +21,7 @@
     {% block footer %}
     <footer>
         <div class="footer">
+            <p>© ATTE semester project. All rights reserved.</p>
             <p>Footer</p>
         </div>
     </footer>
