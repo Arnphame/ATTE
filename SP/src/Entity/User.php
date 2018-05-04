@@ -8,13 +8,28 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity
  * @UniqueEntity(fields="email", message="Email already taken")
  * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface
 {
+
+    private static $userRoles = [
+        'ROLE_USER' => 1,
+        'ROLE_ADMIN' => 2,
+    ];
+
+    /**
+     * @param int $roleDigit
+     * @return string
+     */
+    public function getRole(int $roleDigit): string
+    {
+        return array_search($roleDigit, self::$userRoles);
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -103,10 +118,6 @@ class User implements UserInterface
     {
         $this->role = $role;
     }
-    public function getRole()
-    {
-        return $this->role;
-    }
     public function setToken($token)
     {
         $this->token = $token;
@@ -146,7 +157,7 @@ class User implements UserInterface
     }
     public function getRoles()
     {
-        return null;
+        return array('ROLE_USER');
     }
     public function eraseCredentials()
     {
