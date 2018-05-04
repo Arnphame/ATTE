@@ -1,37 +1,44 @@
 <?php
+
+echo "<pre>";
+session_start();
 $con = mysqli_connect("localhost", "arn", "123", "users");
 
-$login = $_GET['login'];
-$pass = $_GET['pass'];
-$pass2 = $_GET['pass2'];
+$login = $_POST['login'];
+$pass = $_POST['pass'];
+$pass2 = $_POST['pass2'];
 
 $check = mysqli_query($con, "SELECT login FROM user WHERE login='$login'");
 $rows = mysqli_num_rows($check);
+
 if ($rows == 0)
 {
-    if ($pass != $pass2)
+    if ($pass != $pass2) {
+        $_SESSION['error'] = "Passwords do not match";
         header("Location:register.php");
+    }
+    else if($pass == "" || $pass2 == "" || $login == "")
+    {
+        $_SESSION['error'] = "Fill all data";
+        header("Location:register.php");
+    }
     else
     {
         $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
         $insert = mysqli_query($con, "INSERT INTO user (login, password) VALUES ('$login','$hashed_password')");
-        ?> 
-        <html> 
-            <link rel="stylesheet" type="text/css" href="Styles/styles.css">
-            <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-            <header>Your registration is complete.</header> 
-        </html> <?php
+        var_dump($hashed_password);
+        echo "Your registration is complete.";
     }
 }
 else
 {
+    $_SESSION['error'] = "Username is already taken";
     header("Location:register.php");
 }
+
+
 ?>
+
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="Styles/styles.css">
-        <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-    </head>
-    <a class="signup" href="Index.php">Back to login page</a>
+<a href="Index.php">Back to login page </a>
 </html>

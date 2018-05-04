@@ -5,13 +5,19 @@
  * Date: 18.3.18
  * Time: 14.46
  */
+session_start();
+
 if(isset($_SESSION['logged in']))
 {
     header("location: Profile.php");
 }
+if(empty($_SESSION['error']))
+    $errMsg = "";
+else
+    $errMsg = $_SESSION['error'];
 
+session_destroy();
 ?>
-
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="Styles/styles.css">
