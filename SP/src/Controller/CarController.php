@@ -27,9 +27,6 @@ class CarController extends Controller
             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
 
                 $user = $this->getUser();
-
-
-             //   $user->getId();
                 $car->setRuler($user);
             }
 
@@ -62,11 +59,13 @@ class CarController extends Controller
      */
     public function myCarsAction(Request $request,  AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker)
     {
-        if($this->getUser()->getisActive() == 0){
-            return $this->render(
-                'email_authenticate/index.html.twig',
-                array('error' => 'You must authenticate before entering this',
-                ));
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            if ($this->getUser()->getisActive() == 0) {
+                return $this->render(
+                    'email_authenticate/index.html.twig',
+                    array('error' => 'You must authenticate before entering this',
+                    ));
+            }
         }
         if(!$authorizationChecker->isGranted('ROLE_USER'))
         {
