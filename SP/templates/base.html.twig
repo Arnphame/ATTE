@@ -7,22 +7,30 @@
     </head>
     <body>
 {% block header %}
+    {% if app.user %}
     <nav>
         <div class="navbar">
             <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
             <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
-            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
-            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
-            <a style="float:right" href=" {{ path('add_car') }}"> {{ 'My Cars' }}</a>
+            <a style="float:right" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
+            <a style="float:right" href=" {{ path('logout') }}"> {{ 'Logout' }}</a>
         </div>
     </nav>
+    {% else %}
+    <nav>
+        <div class="navbar">
+            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
+            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
+            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
+        </div>
+    </nav>
+    {% endif %}
     {% endblock %}
         {% block body %}{% endblock %}
     {% block footer %}
     <footer>
         <div class="footer">
             <p>© ATTE semester project. All rights reserved.</p>
-            <p>Footer</p>
         </div>
     </footer>
     {% endblock %}

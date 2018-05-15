@@ -24,7 +24,7 @@ class UserController extends Controller
 
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
-            $user->setRole(0);
+            $user->setRole(1);
             $user->setisActive(0);
 
 
@@ -43,7 +43,7 @@ class UserController extends Controller
 
             $mailer->send($message);
 
-            return $this->redirectToRoute('main');
+            return $this->redirectToRoute('email_authenticate');
 
 
         }
@@ -68,5 +68,30 @@ class UserController extends Controller
         $user->setToken(0);
         $em->flush();
         return $this->redirectToRoute('login');
+    }
+
+    /**
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/resend", name="Resend")
+     */
+    public function Resend(\Swift_Mailer $mailer)
+    {
+        $user = $this->getUser();
+        $token = $user->getToken();
+        if($user->getisActive() == 1){
+            return $this->render('main/index.html.twig', array(
+                'error' => 'Your account is already activated',
+            ));
+        }
+        $message = (new \Swift_Message('Resend authentication code'))
+            ->setFrom('test@ATTE.com')
+            ->setTo($user->getEmail())
+            ->setBody('127.0.0.1:8000/activate/' . $token);
+
+        $mailer->send($message);
+        return $this->render('email_authenticate/index.html.twig', array(
+            'success'=>'Activation e-mail resent!',
+        ));
     }
 }

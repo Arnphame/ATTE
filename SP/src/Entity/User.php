@@ -30,6 +30,11 @@ class User implements UserInterface
         return array_search($roleDigit, self::$userRoles);
     }
 
+    //**
+    // * @ORM\OneToMany(targetEntity="Car", mappedBy="ruler")
+   //  */
+  //  private $cars;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -37,15 +42,21 @@ class User implements UserInterface
      */
     private $id;
 
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=191, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=191, unique=true)
      * @Assert\NotBlank()
      */
     private $username;
@@ -70,17 +81,17 @@ class User implements UserInterface
 
     /**
      * For email confirmation
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=191)
      */
     private $token;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=191)
      */
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=191)
      */
     private $phoneNumber;
 
