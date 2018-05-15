@@ -25,31 +25,13 @@ class CarController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-<<<<<<< HEAD
                 $user = $this->getUser();
-
-=======
-
-                $user = $this->getUser();
-
-
->>>>>>> Arnas
-             //   $user->getId();
                 $car->setRuler($user);
             }
-
-
-
-
-         //
-           // $user->setToken($token);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($car);
             $entityManager->flush();
-
-
-           // $mailer->send($message);
 
             return $this->redirectToRoute('my_cars');
 
@@ -67,15 +49,19 @@ class CarController extends Controller
      */
     public function myCarsAction(Request $request,  AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker)
     {
-<<<<<<< HEAD
-=======
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            if ($this->getUser()->getisActive() == 0) {
+                return $this->render(
+                    'email_authenticate/index.html.twig',
+                    array('error' => 'You must authenticate before entering this',
+                    ));
+            }
         if($this->getUser()->getisActive() == 0){
             return $this->render(
                 'email_authenticate/index.html.twig',
                 array('error' => 'You must authenticate before entering this',
                 ));
         }
->>>>>>> Arnas
         if(!$authorizationChecker->isGranted('ROLE_USER'))
         {
             return $this->redirectToRoute('login');
