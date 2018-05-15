@@ -33,3 +33,7 @@
 ### Symfony Patch ###
 /web/css/
 /web/js/
+
+#.idea
+/.idea/
+.idea/workspace.xml
