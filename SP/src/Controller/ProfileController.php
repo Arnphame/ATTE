@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -12,8 +13,16 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfileController',
-        ]);
+        if($this->getUser()->getisActive() == 0){
+            return $this->render(
+                'email_authenticate/index.html.twig',
+                array('error' => 'You must authenticate before entering this',
+                ));
+        }
+        else {
+            return $this->render('profile/index.html.twig', [
+                'controller_name' => 'ProfileController',
+            ]);
+        }
     }
 }

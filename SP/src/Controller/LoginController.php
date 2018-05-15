@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\User;
 
 class LoginController extends Controller
 {
@@ -16,8 +17,7 @@ class LoginController extends Controller
      */
     public function loginAction(Request $request, AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker)
     {
-        if($authorizationChecker->isGranted('ROLE_USER'))
-        {
+        if($authorizationChecker->isGranted('ROLE_USER')){
             return $this->redirectToRoute('profile');
         }
         // get the login error if there is one

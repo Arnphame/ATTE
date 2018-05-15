@@ -7,15 +7,28 @@
     </head>
     <body>
 {% block header %}
+    {% if app.user %}
     <nav>
         <div class="navbar">
             <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
             <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
-            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
-            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
             <a style="float:right" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
+            <a style="float:right" href=" {{ path('logout') }}"> {{ 'Logout' }}</a>
         </div>
     </nav>
+    {% else %}
+    <nav>
+        <div class="navbar">
+            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
+            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
+            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
+<<<<<<< HEAD
+            <a style="float:right" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
+=======
+>>>>>>> Arnas
+        </div>
+    </nav>
+    {% endif %}
     {% endblock %}
         {% block body %}{% endblock %}
     {% block footer %}
