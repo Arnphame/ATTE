@@ -8,16 +8,15 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="main container-fluid">
-	<div class="col-md-10 col-md-offset-1">
-		<h1>Hello {{ controller_name }}! ✅</h1>
+<div class="main">
+    <h1>Hello {{ controller_name }}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code>src/Controller/MainController.php</code></li>
         <li>Your template at <code>templates/main/index.html.twig</code></li>
     </ul>
-        <a href="{{ path('user_registration') }}"> {{ 'Registration' }}</a>
-	</div>
 </div>
+
+    <a href="{{ path('user_registration') }}"> {{ 'Registration' }}</a>
 {% endblock %}
