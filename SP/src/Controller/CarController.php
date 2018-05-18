@@ -25,13 +25,23 @@ class CarController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+
                 $user = $this->getUser();
                 $car->setRuler($user);
             }
 
+
+
+
+         //
+           // $user->setToken($token);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($car);
             $entityManager->flush();
+
+
+           // $mailer->send($message);
 
             return $this->redirectToRoute('my_cars');
 
@@ -56,11 +66,6 @@ class CarController extends Controller
                     array('error' => 'You must authenticate before entering this',
                     ));
             }
-        if($this->getUser()->getisActive() == 0){
-            return $this->render(
-                'email_authenticate/index.html.twig',
-                array('error' => 'You must authenticate before entering this',
-                ));
         }
         if(!$authorizationChecker->isGranted('ROLE_USER'))
         {

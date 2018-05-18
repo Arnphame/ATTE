@@ -85,6 +85,12 @@ class User implements UserInterface
      */
     private $token;
 
+
+    /**
+     * For forgot password
+     * @ORM\Column(type="string", length=191)
+     */
+    private $tokenPass;
     /**
      * @ORM\Column(type="string", length=191)
      */
@@ -136,6 +142,14 @@ class User implements UserInterface
     public function getToken()
     {
         return $this->token;
+    }
+    public function setTokenPass($tokenPass)
+    {
+        $this->tokenPass= $tokenPass;
+    }
+    public function getTokenPass()
+    {
+        return $this->tokenPass;
     }
     public function setAddress($address)
     {

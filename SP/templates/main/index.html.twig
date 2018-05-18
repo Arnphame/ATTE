@@ -2,6 +2,12 @@
 {% block title %}HOME PAGE{% endblock %}
 {% block body %}
 <div class="main">
+    {% if error is defined and error is not empty %}
+        <div>  {{ error }} </div>
+    {% endif %}
+    {% if success is defined and success is not empty %}
+    <div>  {{ success }} </div>
+    {% endif %}
     test
     {% if app.user and app.user.isActive == 0 %}
         TO VISIT OTHER PAGES YOU MUST AUTHENTICATE YOUR EMAIL. IF YOU WANT US TO RESEND EMAIL, <a href="{{ path('Resend') }}">{{ 'CLICK HERE' }}</a>
