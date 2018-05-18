@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <div class="main">
+        {{ form_start(form) }}
+        {% if not form.vars.valid %}
+            <div class="alert">
+                {{ form_errors(form.password.first) }}
+                {% if error is defined and error is not empty %}
+                    <div>  {{ error }} </div>
+                {% endif %}
+                {% if success is defined and success is not empty %}
+                    <div>  {{ success }} </div>
+                {% endif %}
+                <br>
+                <p>Click on the "x" symbol to close the alert message.</p>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endif %}
+        <br>
+        {{ useris }}
+        {{ useris2 }}
+        <br>
+        Password{{ form_widget(form.password.first) }}
+        Repeat password {{ form_widget(form.password.second) }}
+        <button type="submit" class="btn">Change password</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
