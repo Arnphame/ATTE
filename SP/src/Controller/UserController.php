@@ -26,6 +26,7 @@ class UserController extends Controller
             $user->setPassword($password);
             $user->setRole(1);
             $user->setisActive(0);
+            $user->setTokenPass(0);
 
 
             $token = bin2hex(openssl_random_pseudo_bytes(16));

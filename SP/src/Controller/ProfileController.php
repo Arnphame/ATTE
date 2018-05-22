@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Service;
 use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,10 +20,9 @@ class ProfileController extends Controller
                 array('error' => 'You must authenticate before entering this',
                 ));
         }
-        else {
+
             return $this->render('profile/index.html.twig', [
                 'controller_name' => 'ProfileController',
             ]);
-        }
     }
 }
