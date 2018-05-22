@@ -80,8 +80,6 @@ class ForgotPasswordController extends Controller
 
         return $this->render('change_password/index.html.twig', [
             'form' => $form->createView(),
-            'useris' => $user->getPassword(),
-            'useris2' => $user2->getPassword(),
         ]);
     }
 }
