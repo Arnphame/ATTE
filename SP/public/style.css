@@ -1,26 +1,20 @@
-body {margin:0;}
- a{
+body {
+    margin:0;
+}
+
+a{
     color: #FFF;
  }
-.navbar {
-    overflow: hidden;
+.navi {
     background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
 
-.navbar a {
-    float: left;
-    display: block;
+.navi a {
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
 }
 
-.navbar a:hover {
+.navi a:hover {
     background: #ddd;
     color: black;
 }
@@ -31,10 +25,6 @@ body {margin:0;}
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     background-color: #333;
     color: white;
 }
