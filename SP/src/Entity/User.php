@@ -16,25 +16,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
 
-    private static $userRoles = [
-        'ROLE_USER' => 1,
-        'ROLE_ADMIN' => 2,
-    ];
-
-    /**
-     * @param int $roleDigit
-     * @return string
-     */
-    public function getRole(int $roleDigit): string
-    {
-        return array_search($roleDigit, self::$userRoles);
-    }
-
-    //**
-    // * @ORM\OneToMany(targetEntity="Car", mappedBy="ruler")
-   //  */
-  //  private $cars;
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -85,6 +66,12 @@ class User implements UserInterface
      */
     private $token;
 
+
+    /**
+     * For forgot password
+     * @ORM\Column(type="string", length=191)
+     */
+    private $tokenPass;
     /**
      * @ORM\Column(type="string", length=191)
      */
@@ -125,6 +112,10 @@ class User implements UserInterface
     {
         $this->password = $password;
     }
+    public function getRole()
+    {
+        return $this->role;
+    }
     public function setRole($role)
     {
         $this->role = $role;
@@ -136,6 +127,14 @@ class User implements UserInterface
     public function getToken()
     {
         return $this->token;
+    }
+    public function setTokenPass($tokenPass)
+    {
+        $this->tokenPass= $tokenPass;
+    }
+    public function getTokenPass()
+    {
+        return $this->tokenPass;
     }
     public function setAddress($address)
     {

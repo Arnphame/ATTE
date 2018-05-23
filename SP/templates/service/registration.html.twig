@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <div class="main">
+        {% if service is defined %}
+        {{ form_start(form) }}
+        {% if not form.vars.valid %}
+            <div class="alert">
+                Service name: {{ form_errors(form.name) }}
+                Price: {{ form_errors(form.price) }}
+                Duration: {{ form_errors(form.duration) }}
+                Discount: {{ form_errors(form.discount) }}
+                <br>
+                <p>Click on the "x" symbol to close the alert message.</p>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endif %}
+        Service name*{{ form_widget(form.name) }}
+        Price* {{ form_widget(form.price) }}
+        Duration* {{ form_widget(form.duration) }}
+        Discount {{ form_widget(form.discount) }}
+        <button type="submit" class="btn">Add new service</button>
+        {{ form_end(form) }}
+        {% else %}
+        {{ form_start(form) }}
+        {% if not form.vars.valid %}
+            <div class="alert">
+                Service name: {{ form_errors(form.name) }}
+                Price: {{ form_errors(form.price) }}
+                Duration: {{ form_errors(form.duration) }}
+                Discount: {{ form_errors(form.discount) }}
+                <br>
+                <p>Click on the "x" symbol to close the alert message.</p>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endif %}
+        Service name*{{ form_widget(form.name) }}
+        Price* {{ form_widget(form.price) }}
+        Duration* {{ form_widget(form.duration) }}
+        Discount {{ form_widget(form.discount) }}
+        <button type="submit" class="btn">Add new service</button>
+        {{ form_end(form) }}
+        {% endif %}
+    </div>
+{% endblock %}

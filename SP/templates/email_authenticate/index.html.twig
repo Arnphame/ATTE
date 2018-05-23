@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}EMAIL AUTHENTICATION{% endblock %}
+
+{% block body %}
+    <div class="main">
+        {% if error is defined and error is not empty %}
+            <div>  {{ error }} </div>
+        {% endif %}
+        {% if success is defined and success is not empty %}
+            <div>  {{ success }} </div>
+
+        {% else %}
+        YOU MUST AUTHENTICATE YOUR EMAIL BEFORE VISITING THIS PAGE.
+        If you want us to resend email, <a href="{{ path('Resend') }}">{{ 'click here' }}</a>
+        {% endif %}
+
+    </div>
+{% endblock %}

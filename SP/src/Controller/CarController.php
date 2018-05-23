@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\CarType;
 use App\Entity\Car;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,9 +25,8 @@ class CarController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-                $user = $this->getUser();
 
-             //   $user->getId();
+                $user = $this->getUser();
                 $car->setRuler($user);
             }
 
@@ -59,6 +59,14 @@ class CarController extends Controller
      */
     public function myCarsAction(Request $request,  AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            if ($this->getUser()->getisActive() == 0) {
+                return $this->render(
+                    'email_authenticate/index.html.twig',
+                    array('error' => 'You must authenticate before entering this',
+                    ));
+            }
+        }
         if(!$authorizationChecker->isGranted('ROLE_USER'))
         {
             return $this->redirectToRoute('login');
