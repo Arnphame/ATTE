@@ -1,5 +1,7 @@
 body {margin:0;}
-
+ a{
+    color: #FFF;
+ }
 .navbar {
     overflow: hidden;
     background-color: #333;
@@ -33,9 +35,8 @@ body {margin:0;}
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
+    background-color: #333;
     color: white;
-    text-align: center;
 }
 input, select {
     width: 100%;
@@ -84,6 +85,13 @@ input, select {
 {
     float: right;
 }
+
+.hours {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 15%;
+}
+
 #services {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -106,3 +114,46 @@ input, select {
     background-color: #4CAF50;
     color: white;
 }
+.icon{
+    font-size: 40px;
+}
+/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:100px) { 
+    .icon {
+        font-size: 40px;
+    }
+
+    h5{
+        font-size: 12px;
+    }
+    h4 {
+        font-size: 17px;
+    }
+ }
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media (min-width:481px) { 
+    .icon {
+        font-size: 70px;
+    }
+    h5{
+        font-size: 15px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+ }
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media (min-width:768px) { 
+    
+ }
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:961px) { 
+ }
+/* big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) { 
+
+ }
+/* hi-res laptops and desktops */
+@media (min-width:1281px) { 
+    
+ }
