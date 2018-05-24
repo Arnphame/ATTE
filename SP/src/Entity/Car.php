@@ -34,6 +34,11 @@ class Car
      */
     private $id;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @ORM\Column(type="string", length=191, unique=true)
      * @Assert\NotBlank()

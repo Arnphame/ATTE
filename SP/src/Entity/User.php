@@ -82,7 +82,9 @@ class User implements UserInterface
      */
     private $phoneNumber;
 
-
+    public function __toString() {
+        return (string) $this->username;
+    }
     public function getEmail()
     {
         return $this->email;

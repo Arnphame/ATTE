@@ -72,7 +72,6 @@ class ForgotPasswordController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user2->getPassword()); // nesuveikia šita eilutė.
             $user->setPassword($password);
             $user->setTokenPass(0);
-
             $entityManager->flush();
 
             return $this->redirectToRoute('login');
