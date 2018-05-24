@@ -61,6 +61,7 @@
         {% endif %}
         <table id="services">
             <tr>
+                <th>Created by</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Duration</th>
@@ -70,6 +71,7 @@
             </tr>
             {% for s in services %}
                 <tr>
+                    <td>{{ s.ruler }}</td>
                     <td>{{ s.name }}</td>
                     <td>{{ s.price }}</td>
                     <td>{{ s.duration }}</td>

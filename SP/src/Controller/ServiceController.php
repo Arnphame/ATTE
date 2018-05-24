@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Entity\User;
 use App\Form\ServiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,8 @@ class ServiceController extends Controller
        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
            if ($this->getUser()->getisActive() == 1 && $this->getUser()->getRole() == 2) {
                $service = new Service();
+               $user = $this->getUser();
+               $service->setRuler($user);
                $form = $this->createForm(ServiceType::class, $service);
 
                $form->handleRequest($request);
@@ -90,6 +93,7 @@ class ServiceController extends Controller
    public function ShowServices()
    {
        $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
+
        return $this->render('service/index.html.twig', [
            'controller_name' => 'ServiceController',
            'services' => $service,
