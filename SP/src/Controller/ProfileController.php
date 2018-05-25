@@ -15,6 +15,12 @@ class ProfileController extends Controller
      */
     public function ShowProfile()
     {
+        if($this->getUser()->getisDisabled() == 1){
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
         if($this->getUser()->getisActive() == 0){
             return $this->render(
                 'email_authenticate/index.html.twig',

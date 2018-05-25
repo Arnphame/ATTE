@@ -66,7 +66,21 @@ class CarService
      * @ORM\Column(type="string", length=191, unique=true, nullable=true))
      */
     private $mechanic;
+    /**
+     * @ORM\ManyToOne(targetEntity="Service", inversedBy="CarService")
+     * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
+     */
+    private $rulerService;
 
+
+    public function getrulerService()
+    {
+        return $this->rulerService;
+    }
+    public function setrulerService($ruler)
+    {
+        $this->rulerService = $ruler;
+    }
     public function getTime()
     {
         return $this->time;

@@ -20,6 +20,12 @@ class ForgotPasswordController extends Controller
      */
     public function PasswordSend(Request $request, \Swift_Mailer $mailer)
     {
+        if($this->getUser()->getisDisabled() == 1){
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
         $user = new ForgotPassword();
         $error = "";
         $form = $this->createForm(ForgotPasswordType::class, $user);
