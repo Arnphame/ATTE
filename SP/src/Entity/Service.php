@@ -74,6 +74,10 @@ class Service
      * )
      */
     private $discount;
+    /**
+     **  @ORM\Column(type="float", length=10, nullable=true)
+     */
+    private $totalPrice;
 
     public function getId()
     {
@@ -110,5 +114,13 @@ class Service
     public function setDiscount($discount)
     {
         $this->discount = $discount;
+    }
+    public function getTotalprice()
+    {
+        return $this->totalPrice;
+    }
+    public function setTotalPrice($price)
+    {
+        $this->totalPrice = $price;
     }
 }

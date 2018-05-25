@@ -27,6 +27,8 @@ class ServiceController extends Controller
                $form->handleRequest($request);
                if ($form->isSubmitted() && $form->isValid()) {
                    $entityManager = $this->getDoctrine()->getManager();
+                   $getTotalPrice = $service->getPrice() * ($service->getDiscount() / 100);
+                   $service->setTotalPrice($service->getPrice() - $getTotalPrice);
                    $entityManager->persist($service);
                    $entityManager->flush();
                    return $this->redirectToRoute('service');
@@ -73,7 +75,8 @@ class ServiceController extends Controller
        $form->handleRequest($request);
 
        if($form->isSubmitted() && $form->isValid()){
-
+           $getTotalPrice = $service->getPrice() * ($service->getDiscount() / 100);
+           $service->setTotalPrice($service->getPrice() - $getTotalPrice);
            $em->flush();
 
            return $this->redirectToRoute('service');

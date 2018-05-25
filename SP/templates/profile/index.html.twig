@@ -9,7 +9,12 @@
 </style>
 
 <div class="main">
-
+    {% if error is defined and error is not empty %}
+        <div>  {{ error }} </div>
+    {% endif %}
+    {% if success is defined and success is not empty %}
+        <div>  {{ success }} </div>
+    {% endif %}
     <h1>Hello User! ✅</h1>
 
     This friendly message is coming from:
