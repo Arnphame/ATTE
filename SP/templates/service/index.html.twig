@@ -66,6 +66,7 @@
                 <th>Price</th>
                 <th>Duration</th>
                 <th>Discount</th>
+                <th>Total price</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -81,6 +82,7 @@
                             {{ s.discount }}
                         {% endif %}
                     </td>
+                    <td>{{ s.totalprice }}</td>
                     <td><a href = "{{ 'serviceedit/' ~ s.id }}">Edit</a></td>
                     <td><a href = "{{ 'servicedelete/' ~ s.id }}">Delete</a></td>
                 </tr>

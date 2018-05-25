@@ -12,12 +12,7 @@
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 </div>
             {% endif %}
-        <select>
-            {% for car in cars %}
-                {% set selected = 'None' %}
-                <option value="{{ car.id }}" {{ selected }}> {{ car.make ~ ' ' ~ car.model }}</option>
-            {% endfor %}
-        </select>
+            {{ form_widget(form.rulerCar) }}
             {{ form_widget(form.time) }}
 
             <button type="submit" class="btn">Register car to service</button>

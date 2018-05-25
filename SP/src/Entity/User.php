@@ -81,6 +81,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=191)
      */
     private $phoneNumber;
+    /**
+     * Disabled = 1; notDisabled = 0;
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $isDisabled;
 
     public function __toString() {
         return (string) $this->username;
@@ -161,6 +166,14 @@ class User implements UserInterface
     public function getisActive()
     {
         return $this->isActive;
+    }
+    public function getisDisabled()
+    {
+        return $this->isDisabled;
+    }
+    public function setisDisabled($status)
+    {
+        $this->isDisabled = $status;
     }
 
     public function getSalt()
