@@ -59,6 +59,12 @@ class CarController extends Controller
      */
     public function myCarsAction(Request $request,  AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authorizationChecker)
     {
+        if($this->getUser()->getisDisabled() == 1){
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             if ($this->getUser()->getisActive() == 0) {
                 return $this->render(

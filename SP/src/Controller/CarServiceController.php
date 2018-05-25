@@ -16,6 +16,12 @@ class CarServiceController extends Controller
      */
     public function createService(Request $request)
     {
+        if($this->getUser()->getisDisabled() == 1){
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
         $carService = new CarService();
         $user = $this->getUser();
         $setCar = new Car();
