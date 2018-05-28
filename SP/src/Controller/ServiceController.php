@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Entity\User;
 use App\Form\ServiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,11 +20,15 @@ class ServiceController extends Controller
        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
            if ($this->getUser()->getisActive() == 1 && $this->getUser()->getRole() == 2) {
                $service = new Service();
+               $user = $this->getUser();
+               $service->setRuler($user);
                $form = $this->createForm(ServiceType::class, $service);
 
                $form->handleRequest($request);
                if ($form->isSubmitted() && $form->isValid()) {
                    $entityManager = $this->getDoctrine()->getManager();
+                   $getTotalPrice = $service->getPrice() * ($service->getDiscount() / 100);
+                   $service->setTotalPrice($service->getPrice() - $getTotalPrice);
                    $entityManager->persist($service);
                    $entityManager->flush();
                    return $this->redirectToRoute('service');
@@ -56,24 +61,27 @@ class ServiceController extends Controller
      */
    public function EditService($id, Request $request)
    {
-       $service = $this->getDoctrine()->getRepository(Service::class)->findOneBy(['id' => $id]);
-       $em = $this->getDoctrine()->getManager();
+       if($this->getUser()->getRole() == 2) {
+           $service = $this->getDoctrine()->getRepository(Service::class)->findOneBy(['id' => $id]);
+           $em = $this->getDoctrine()->getManager();
 
-       if(!$service){
-           return $this->render(
-               'profile/index.html.twig',
-               array('error' => 'No service with this ID found',
-               ));
-       }
+           if (!$service) {
+               return $this->render(
+                   'profile/index.html.twig',
+                   array('error' => 'No service with this ID found',
+                   ));
+           }
 
-       $form = $this->createForm(ServiceType::class, $service);
-       $form->handleRequest($request);
+           $form = $this->createForm(ServiceType::class, $service);
+           $form->handleRequest($request);
 
-       if($form->isSubmitted() && $form->isValid()){
+           if ($form->isSubmitted() && $form->isValid()) {
+               $getTotalPrice = $service->getPrice() * ($service->getDiscount() / 100);
+               $service->setTotalPrice($service->getPrice() - $getTotalPrice);
+               $em->flush();
 
-           $em->flush();
-
-           return $this->redirectToRoute('service');
+               return $this->redirectToRoute('service');
+           }
        }
 
        return $this->render(
@@ -89,22 +97,32 @@ class ServiceController extends Controller
      */
    public function ShowServices()
    {
+       if($this->getUser()->getisDisabled() == 1){
+           return $this->render(
+               'main/index.html.twig',
+               array('error' => 'Your account is disabled. Please contact administrator for more information',
+               ));
+       }
        $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
+
        return $this->render('service/index.html.twig', [
            'controller_name' => 'ServiceController',
            'services' => $service,
        ]);
    }
+
     /**
      * @Route("/servicedelete/{id}", name="servicedelete")
      */
    public function DeleteService($id, Request $request)
    {
-       $service = $this->getDoctrine()->getRepository(Service::class)->findOneBy(['id' => $id]);
-       if($service) {
-           $em = $this->getDoctrine()->getManager();
-           $em->remove($service);
-           $em->flush();
+       if($this->getUser()->getRoles() == 2) {
+           $service = $this->getDoctrine()->getRepository(Service::class)->findOneBy(['id' => $id]);
+           if ($service) {
+               $em = $this->getDoctrine()->getManager();
+               $em->remove($service);
+               $em->flush();
+           }
        }
        return $this->redirectToRoute('service');
    }

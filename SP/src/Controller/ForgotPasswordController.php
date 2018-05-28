@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,6 +20,12 @@ class ForgotPasswordController extends Controller
      */
     public function PasswordSend(Request $request, \Swift_Mailer $mailer)
     {
+        if($this->getUser()->getisDisabled() == 1){
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
         $user = new ForgotPassword();
         $error = "";
         $form = $this->createForm(ForgotPasswordType::class, $user);
@@ -56,24 +63,25 @@ class ForgotPasswordController extends Controller
     public function ForgotPassword(\Swift_Mailer $mailer, $tokenPass, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['tokenPass' => $tokenPass]);
+        var_dump($user);
+        if ($user instanceof UserInterface)
+            var_dump('instance');
+
 
         if($user == null)
         {
-            return $this->render('main/index.html.twig', [
-                'error' => 'Token not found.'
-            ]);
+            return $this->redirectToRoute('main');
         }
-        $user2 = new User();
-        $form = $this->createForm(ChangePasswordType::class, $user2);
+        $changePass = new ChangePassword();
+        $form = $this->createForm(ChangePasswordType::class, $changePass);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $password = $passwordEncoder->encodePassword($user, $user2->getPassword()); // nesuveikia šita eilutė.
-            $user->setPassword($password);
-            $user->setTokenPass(0);
-
-            $entityManager->flush();
+                $password = $passwordEncoder->encodePassword($user, $changePass->getPassword()); // nesuveikia šita eilutė.
+                $user->setPassword($password);
+                $user->setTokenPass(0);
+                $entityManager->flush();
 
             return $this->redirectToRoute('login');
         }

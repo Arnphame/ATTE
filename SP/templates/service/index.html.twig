@@ -61,15 +61,18 @@
         {% endif %}
         <table id="services">
             <tr>
+                <th>Created by</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Duration</th>
                 <th>Discount</th>
+                <th>Total price</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             {% for s in services %}
                 <tr>
+                    <td>{{ s.ruler }}</td>
                     <td>{{ s.name }}</td>
                     <td>{{ s.price }}</td>
                     <td>{{ s.duration }}</td>
@@ -79,6 +82,7 @@
                             {{ s.discount }}
                         {% endif %}
                     </td>
+                    <td>{{ s.totalprice }}</td>
                     <td><a href = "{{ 'serviceedit/' ~ s.id }}">Edit</a></td>
                     <td><a href = "{{ 'servicedelete/' ~ s.id }}">Delete</a></td>
                 </tr>

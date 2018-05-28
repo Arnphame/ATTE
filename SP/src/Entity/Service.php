@@ -15,6 +15,23 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Service
 {
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="Service")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $ruler;
+
+    /**
+     * @param mixed $ruler
+     */
+    public function setRuler($ruler)
+    {
+        $this->ruler = $ruler;
+    }
+    public function getRuler()
+    {
+        return $this->ruler;
+    }
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -57,6 +74,10 @@ class Service
      * )
      */
     private $discount;
+    /**
+     **  @ORM\Column(type="float", length=10, nullable=true)
+     */
+    private $totalPrice;
 
     public function getId()
     {
@@ -93,5 +114,16 @@ class Service
     public function setDiscount($discount)
     {
         $this->discount = $discount;
+    }
+    public function getTotalprice()
+    {
+        return $this->totalPrice;
+    }
+    public function setTotalPrice($price)
+    {
+        $this->totalPrice = $price;
+    }
+    public function __toString() {
+        return (string) $this->name . ' '. (string) $this->totalPrice;
     }
 }

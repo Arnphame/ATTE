@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+    <div class="main">
+            {{ form_start(form) }}
+            {% if not form.vars.valid %}
+                <div class="alert">
+                    Time: {{ form_errors(form.time) }}
+                    <br>
+                    <p>Click on the "x" symbol to close the alert message.</p>
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                </div>
+            {% endif %}
+            {{ form_widget(form.rulerCar) }}
+            {{ form_widget(form.time) }}
+
+            <button type="submit" class="btn">Register car to service</button>
+            {{ form_end(form) }}
+    </div>
+{% endblock %}

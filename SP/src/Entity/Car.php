@@ -34,20 +34,31 @@ class Car
      */
     private $id;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
-     * @ORM\Column(type="string", length=191, unique=true)
+     * @ORM\Column(type="string", length=6, unique=true)
+
+     */
+    private $regNr;
+
+    /**
+     * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank()
      */
     private $make;
 
     /**
-     * @ORM\Column(type="string", length=191, unique=true)
+     * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank()
      */
     private $model;
 
     /**
-     * @ORM\Column(type="date", length = 17, unique=true)
+     * @ORM\Column(type="date", length = 17)
      * @Assert\NotBlank()
      */
     private $year;
@@ -57,6 +68,21 @@ class Car
      * @Assert\NotBlank()
      */
     private $fuelType;
+
+        /**
+         * @ORM\Column(type="string", length=191)
+         * @Assert\NotBlank()
+         */
+    private $gearbox;
+
+    /**
+     * @ORM\Column(type="float", length=3)
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *     min = 0.1,
+     * )
+     */
+    private $engineCapacity;
 
     public function __construct()
     {
@@ -71,6 +97,38 @@ class Car
     public function setMake($make)
     {
         $this->make = $make;
+    }
+
+    public function setGearbox($gearbox)
+    {
+        $this->gearbox = $gearbox;
+    }
+    public function setEngineCapacity($engineCapacity)
+    {
+        $this->engineCapacity = $engineCapacity;
+    }
+    public function setRegNr($regNr)
+    {
+        $this->regNr = $regNr;
+    }
+
+    public function getGearbox()
+    {
+        return $this->gearbox;
+    }
+
+    public function getRegNr()
+    {
+        return $this->regNr;
+    }
+
+    public function getEngineCapacity()
+    {
+        return $this->engineCapacity;
+    }
+
+    public function __toString() {
+        return (string) $this->getRegNr();
     }
 
     public function getModel()
