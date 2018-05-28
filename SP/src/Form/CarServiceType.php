@@ -28,6 +28,9 @@ class CarServiceType extends AbstractType
                 'query_builder' => function (EntityRepository $entityRepository)  {
                     return $entityRepository->createQueryBuilder('u')->where('u.ruler = 5');
                 },
+           //     'choice_value' => function(Car $entity = null) {
+             //       return null === $entity ? '':$entity->getRegNr();
+               // },
                 'choice_label' => 'make',
             ))
             ->add('rulerService', EntityType::class, array(
