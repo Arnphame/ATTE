@@ -37,18 +37,9 @@ class CarServiceType extends AbstractType
             ->add('time', DateTimeType::class)
             ->add('rulerCar', EntityType::class, array(
                 'class' => Car::class,
-<<<<<<< HEAD
                 'query_builder' => function (EntityRepository $entityRepository) use ($tokenStorage)  {
                     return $entityRepository->createQueryBuilder('u')->where('u.ruler = :ruler')->setParameter('ruler', $tokenStorage->getId());
                     },
-=======
-                'query_builder' => function (EntityRepository $entityRepository)  {
-                    return $entityRepository->createQueryBuilder('u')->where('u.ruler = 5');
-                },
-           //     'choice_value' => function(Car $entity = null) {
-             //       return null === $entity ? '':$entity->getRegNr();
-               // },
->>>>>>> master
                 'choice_label' => 'make',
                 'choice_value' => 'id',
             ))

@@ -39,13 +39,7 @@ class CarServiceController extends Controller
                 $user = $this->getUser();
                 $carService->setRulerUser($user);
             }
-<<<<<<< HEAD
             $carService->setStatus("Laukiama patvirtinimo");
-=======
-            $car = $this->getDoctrine()->getRepository(Car::class)->find($setCar->getId());
-            $carService->setStatus("Laukiama patvirtinimo");
-            $carService->setRulerCar($car);
->>>>>>> master
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($carService);
             $entityManager->flush();
@@ -76,11 +70,7 @@ class CarServiceController extends Controller
                 ));
         }
 
-<<<<<<< HEAD
         if($this->getUser()->getRole() == 1) {
-=======
-        if ($this->getUser()->getRoles() == 1) {
->>>>>>> master
             $user = $this->getUser();
 
             $carService = $this->getDoctrine()->getRepository(CarService::class)->findBy(['rulerUser' => $user]);
@@ -90,11 +80,7 @@ class CarServiceController extends Controller
                 'carServices' => $carService,
 
             ]);
-<<<<<<< HEAD
         } if ($this->getUser()->getRole() == 2) {
-=======
-        } else {
->>>>>>> master
             $carService = $this->getDoctrine()->getRepository(CarService::class)->findAll();
 
             return $this->render('car_service/index.html.twig', [
@@ -102,7 +88,6 @@ class CarServiceController extends Controller
                 'carServices' => $carService,
             ]);
         }
-<<<<<<< HEAD
         return $this->redirectToRoute('main');
     }
     /**
@@ -144,7 +129,5 @@ class CarServiceController extends Controller
             array('form' => $form->createView(),
                 'error' => 'No Car service with this ID found',
             ));
-=======
->>>>>>> master
     }
 }
