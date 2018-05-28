@@ -5,6 +5,9 @@ parameters:
 
 services:
     # default configuration for services in *this* file
+    App\Form\CarServiceType:
+        arguments: ['@security.token_storage']
+        tags: [form_type]
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

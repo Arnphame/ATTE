@@ -2,9 +2,47 @@
 {% block title %}Hello!{% endblock %}
 
 {% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
     <div class="main">
-        You do not have any car registered.
-        Click the button bellow to add one.
+        {% if error is defined and error is not empty %}
+            <div>  {{ error }} </div>
+        {% endif %}
+        {% if success is defined and success is not empty %}
+            <div>  {{ success }} </div>
+        {% endif %}
+        <table id="cars">
+            <tr>
+                <th>Registration number</th>
+                <th>Make</th>
+                <th>Model</th>
+
+                <th>Fuel type</th>
+                <th>Gearbox</th>
+                <th>Engine capacity</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Register to service</th>
+            </tr>
+            {% for c in cars %}
+                <tr>
+                    <td>{{ c.regNr }}</td>
+                    <td>{{ c.make }}</td>
+                    <td>{{ c.model }}</td>
+
+                    <td>{{ c.fuelType }}</td>
+                    <td>{{ c.gearbox }}</td>
+                    <td>{{ c.engineCapacity }}</td>
+                    <td><a href = "{{ 'caredit/' ~ c.id }}">Edit</a></td>
+                    <td><a href = "{{ 'cardelete/' ~ c.id }}">Delete</a></td>
+                    <td><a href = "{{ 'carservicecreate' }}">Register to service</a></td>
+
+                </tr>
+            {% endfor %}
+        </table>
 
         <button type="submit" class="btn">Add new car</button>
         <a href="{{ path('add_car') }}"> {{ 'Add a new car' }}</a>

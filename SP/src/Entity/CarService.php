@@ -53,6 +53,10 @@ class CarService
      * @ORM\Column(type="integer")
      */
     private $id;
+    public function getId()
+    {
+        return $this->id;
+    }
     /**
      * @ORM\Column(type="datetime", length=191)
      * @Assert\NotBlank()
@@ -63,7 +67,7 @@ class CarService
      */
     private $status;
     /**
-     * @ORM\Column(type="string", length=191, unique=true, nullable=true))
+     * @ORM\Column(type="string", length=191, nullable=true))
      */
     private $mechanic;
     /**

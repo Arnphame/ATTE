@@ -1,3 +1,20 @@
+1.4
+===
+
+* Removed our tests from the archive to avoid polluting the
+  user's auto-completion of classes #147
+
+* Fixed some minor bugs! #150 #145
+
+1.3
+===
+
+* Drastically improved `make:entity` command, which now supports
+  adding fields, relationships, updating existing entities, and
+  generating (with the `--regenerate` flag) missing
+  properties/getters/setters (effectively replaces `doctrine:generate:entities`)
+  - thanks to @weaverryan in #104
+
 1.2
 ===
 

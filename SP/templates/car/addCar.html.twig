@@ -7,10 +7,13 @@
 
         <br>
         <br>
+        Registration number {{ form_widget(form.regNr) }}
         Make {{ form_widget(form.make) }}
         Model {{ form_widget(form.model) }}
         Year of production{{ form_widget(form.year) }}
         Fuel Type {{ form_widget(form.fuelType) }}
+        Gearbox {{ form_widget(form.gearbox) }}
+        Engine Capacity {{ form_widget(form.engineCapacity) }}
 
         <button type="submit" class="btn">Add</button>
         {{ form_end(form) }}
