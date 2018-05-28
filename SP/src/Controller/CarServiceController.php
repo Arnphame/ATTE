@@ -31,13 +31,12 @@ class CarServiceController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-
                 $user = $this->getUser();
                 $carService->setRulerUser($user);
             }
-            //$car = $this->getDoctrine()->getRepository(Car::class)->find($setCar->getId());
+            $car = $this->getDoctrine()->getRepository(Car::class)->find($setCar->getId());
             $carService->setStatus("Laukiama patvirtinimo");
-            //$carService->setRulerCar($car);
+            $carService->setRulerCar($car);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($carService);
             $entityManager->flush();
@@ -53,5 +52,38 @@ class CarServiceController extends Controller
             array('form' => $form->createView(),
                 'cars' => $cars,)
         );
+    }
+
+    /**
+     * @Route("/carservice", name="carservice")
+     */
+    public function ShowCarServices()
+    {
+
+        if ($this->getUser()->getisDisabled() == 1) {
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
+
+        if ($this->getUser()->getRoles() == 1) {
+            $user = $this->getUser();
+
+            $carService = $this->getDoctrine()->getRepository(CarService::class)->findBy(['rulerUser' => $user]);
+
+            return $this->render('car_service/index.html.twig', [
+                'controller_name' => 'CarServiceController',
+                'carServices' => $carService,
+
+            ]);
+        } else {
+            $carService = $this->getDoctrine()->getRepository(CarService::class)->findAll();
+
+            return $this->render('car_service/index.html.twig', [
+                'controller_name' => 'CarServiceController',
+                'carServices' => $carService,
+            ]);
+        }
     }
 }

@@ -9,8 +9,11 @@
 
             <service id="maker.file_manager" class="Symfony\Bundle\MakerBundle\FileManager">
                 <argument type="service" id="filesystem" />
+                <argument type="service" id="maker.autoloader_util" />
                 <argument>%kernel.project_dir%</argument>
             </service>
+
+            <service id="maker.autoloader_util" class="Symfony\Bundle\MakerBundle\Util\AutoloaderUtil" />
 
             <service id="maker.event_registry" class="Symfony\Bundle\MakerBundle\EventRegistry">
                 <argument type="service" id="event_dispatcher" />
@@ -20,7 +23,7 @@
                 <tag name="kernel.event_subscriber" />
             </service>
 
-            <service id="maker.doctrine_entity_helper" class="Symfony\Bundle\MakerBundle\Doctrine\DoctrineEntityHelper">
+            <service id="maker.doctrine_helper" class="Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper">
                 <argument type="service" id="doctrine" on-invalid="ignore"/>
             </service>
         </services>
