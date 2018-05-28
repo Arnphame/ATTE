@@ -2,41 +2,73 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Hello {% endblock %}</title>
+        <meta name="viewport" content="width=device-width">
+        <title>{% block title %}ATTE {% endblock %}</title>
+        <!-- Font Awesome -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         {% block stylesheets %} <link href="{{ asset('style.css') }}" rel="stylesheet"> {% endblock %}
     </head>
     <body>
-{% block header %}
-    {% if app.user %}
-    <nav>
-        <div class="navbar">
-            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
-            <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
-            <a href=" {{ path('service') }}"> {{ 'Services' }}</a>
-            <a href=" {{ path('car_service') }}"> {{ 'Register car to service!' }}</a>
-            <a style="float:right" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
-            <a style="float:right" href=" {{ path('logout') }}"> {{ 'Logout' }}</a>
+        {% block header %}
+            {% if app.user %}
+                <div class="navbar navbar-inverse navbar-fixed-top navi container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>                        
+                        </button>
+                        <a class="navbar-brand" href="#">ATTE Services</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href=" {{ path('main') }}">Home</a></li>
+                            <li ><a href=" {{ path('profile') }}">Profile</a></li>
+                            <li ><a href=" {{ path('service') }}"> {{ 'Services' }}</a></li>
+                            <li ><a href=" {{ path('car_service') }}"> {{ 'Register car to service!' }}</a></li>
+                            <li ><a style="float:right" href=" {{ path('my_cars') }}">My cars</a></li>
+                            <li ><a style="float:right" href=" {{ path('my_cars') }}">Users</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a style="float:right" href=" {{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% else %} 
+                <div class="navbar navbar-inverse container-fluid">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="{{ path('main') }}">ATTE Services</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href=" {{ path('main') }}">Home</a></li>
+                        <li ><a href=" {{ path('profile') }}">Profile</a></li>
+                        <li ><a style="float:right" href=" {{ path('my_cars') }}">My cars</a></li>
+                        <li ><a style="float:right" href=" {{ path('my_cars') }}">Users</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a style="float:right" href=" {{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+        <div style="background: red; min-height: 100%;">
+            This is content
         </div>
-    </nav>
-    {% else %}
-    <nav>
-        <div class="navbar">
-            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
-            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
-            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
-        </div>
-    </nav>
-    {% endif %}
-    {% endblock %}
-        {% block body %}{% endblock %}
-    {% block footer %}
-    <footer>
-        <div class="footer">
-            <p>© ATTE semester project. All rights reserved.</p>
-        </div>
-    </footer>
-    {% endblock %}
-{% block javascripts %}
-{% endblock %}
     </body>
 </html>
