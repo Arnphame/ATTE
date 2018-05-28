@@ -20,27 +20,19 @@
             <table id="services">
                 <tr>
                     <th>Car</th>
-                    <th>User</th>
                     <th>Service</th>
                     <th>Status</th>
-
+                    <th>More</th>
                 </tr>
                 {% for s in carServices %}
                     <tr>
                         <td>{{ s.rulerCar }}</td>
-                        <td>{{ s.rulerUser }}</td>
                         <td>{{ s.rulerService }}</td>
                         <td>{{ s.status }}</td>
+                        <td><a href = "{{ 'carservicemore/'}}">More</a></td>
                     </tr>
                 {% endfor %}
             </table>
-            <h1>Hello User! ✅</h1>
-
-            This friendly message is coming from:
-            <ul>
-                <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
-                <li>Your template at <code>templates/profile/index.html.twig</code></li>
-            </ul>
         </div>
     {% endif %}
     <style>
@@ -64,25 +56,22 @@
                 <th>Status</th>
                 <th>Mechanic</th>
                 <th>More</th>
+                <th>Change Status</th>
             </tr>
             {% for s in carServices %}
+                {% if s.status != 'Service done' %}
                 <tr>
                     <td>{{ s.rulerCar }}</td>
                     <td>{{ s.rulerUser }}</td>
                     <td>{{ s.rulerService }}</td>
                     <td>{{ s.status }}</td>
                     <td>{{ s.mechanic }}</td>
-                    <td><a href = "{{ 'carservicemore/'}}">More</a></td>
+                    <td><a href = "{{ 'carservicemore/' ~ s.id }}">More</a></td>
+                    <td><a href = "{{ 'carservicestatus/' ~ s.id }}">Change status</a></td>
                 </tr>
+                {% endif %}
             {% endfor %}
         </table>
-        <h1>Hello ADMINISTRATOR! ✅</h1>
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
-            <li>Your template at <code>templates/profile/index.html.twig</code></li>
-        </ul>
         </div>
     {% endif %}
 {% endblock %}

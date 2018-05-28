@@ -37,13 +37,6 @@
                     </tr>
                 {% endfor %}
             </table>
-            <h1>Hello User! ✅</h1>
-
-            This friendly message is coming from:
-            <ul>
-                <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
-                <li>Your template at <code>templates/profile/index.html.twig</code></li>
-            </ul>
         </div>
     {% endif %}
     <style>
@@ -88,13 +81,7 @@
                 </tr>
             {% endfor %}
         </table>
-        <h1>Hello ADMINISTRATOR! ✅</h1>
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
-            <li>Your template at <code>templates/profile/index.html.twig</code></li>
-        </ul>
+        <td><a href = "{{ 'serviceregistration' }}">Create new service</a></td>
         </div>
     {% endif %}
 {% endblock %}

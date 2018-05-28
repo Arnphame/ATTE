@@ -124,6 +124,6 @@ class Service
         $this->totalPrice = $price;
     }
     public function __toString() {
-        return (string) $this->name . ' '. (string) $this->totalPrice;
+        return (string) $this->name . ' '. "(" . (string) $this->totalPrice . "€)";
     }
 }
