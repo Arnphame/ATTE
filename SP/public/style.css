@@ -1,33 +1,17 @@
-body {
-    margin:0;
+body { 
+   
 }
+
 
 a{
     color: #FFF;
  }
-.navi {
-    background-color: #333;
-}
-
-.navi a {
-    color: #f2f2f2;
-    text-decoration: none;
-}
-
-.navi a:hover {
-    background: #ddd;
-    color: black;
-}
-
-.main {
-    padding: 45px;
-    margin-top: 60px;
-}
 
 .footer {
     background-color: #333;
     color: white;
 }
+
 input, select {
     width: 100%;
     padding: 12px 20px;
@@ -106,6 +90,13 @@ input, select {
 }
 .icon{
     font-size: 40px;
+}
+
+
+@media screen and (max-width: 768px) {
+    body { 
+        padding-top: 0px; 
+    }
 }
 /* smartphones, iPhone, portrait 480x320 phones */
 @media (min-width:100px) { 
