@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\User;
 use App\Entity\CarService;
 use App\Form\CarServiceStatusType;
 use App\Form\CarServiceType;
@@ -40,6 +41,11 @@ class CarServiceController extends Controller
                 $carService->setRulerUser($user);
             }
             $carService->setStatus("Laukiama patvirtinimo");
+          //  $time = date('H:i:s \O\n d/m/Y');
+            $time = new \DateTime();
+            $carService->setFirstTime($time);
+            $carService->setLastChangeTime($time);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($carService);
             $entityManager->flush();
@@ -90,6 +96,32 @@ class CarServiceController extends Controller
         }
         return $this->redirectToRoute('main');
     }
+
+    /**
+     * @Route("/carservicemore/{id}", name="carservicemore")
+     */
+    public function ShowDetailInfoOfService($id)
+    {
+
+        if ($this->getUser()->getisDisabled() == 1) {
+            return $this->render(
+                'main/index.html.twig',
+                array('error' => 'Your account is disabled. Please contact administrator for more information',
+                ));
+        }
+
+
+
+            $service = $this->getDoctrine()->getRepository(CarService::class)->findOneBy(['id' => $id]);
+            $mechanic =  $this->getDoctrine()->getRepository(User::class)->findOneBy(['username' => $service->getMechanic()]);
+            return $this->render('car_service/detailInfo.html.twig', [
+                'controller_name' => 'CarServiceController',
+                'carService' => $service,
+                'mechanic' => $mechanic,
+
+            ]);
+    }
+
     /**
      * @Route("/carservicestatus/{id}", name="carservicestatus")
      */
@@ -111,6 +143,7 @@ class CarServiceController extends Controller
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $service->setMechanic($this->getUser());
+                $service->setLastChangeTime(new \DateTime());
                 $em->flush();
                 if($service->getStatus() == "Service done"){
                     $message = (new \Swift_Message('ATTE: Your vehicle is done!'))

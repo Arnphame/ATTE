@@ -40,7 +40,7 @@ class CarServiceType extends AbstractType
                 'query_builder' => function (EntityRepository $entityRepository) use ($tokenStorage)  {
                     return $entityRepository->createQueryBuilder('u')->where('u.ruler = :ruler')->setParameter('ruler', $tokenStorage->getId());
                     },
-                'choice_label' => 'make',
+                'choice_label' => 'regNr',
                 'choice_value' => 'id',
             ))
             ->add('rulerService', EntityType::class, array(
