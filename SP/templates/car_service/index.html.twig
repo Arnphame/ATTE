@@ -29,7 +29,7 @@
                         <td>{{ s.rulerCar }}</td>
                         <td>{{ s.rulerService }}</td>
                         <td>{{ s.status }}</td>
-                        <td><a href = "{{ 'carservicemore/'}}">More</a></td>
+                        <td><a href = "{{ 'carservicemore/' ~ s.id}}">More</a></td>
                     </tr>
                 {% endfor %}
             </table>

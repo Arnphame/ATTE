@@ -62,6 +62,7 @@ class CarService
      * @Assert\NotBlank()
      */
     private $time;
+
     /**
      * @ORM\Column(type="string", length=191)
      */
@@ -76,6 +77,32 @@ class CarService
      */
     private $rulerService;
 
+    /**
+     * @ORM\Column(type="datetime", length=191)
+     */
+    private $lastChangeTime;
+
+    public function getLastChangeTime()
+    {
+        return $this->lastChangeTime;
+    }
+    public function setLastChangeTime($time)
+    {
+        $this->lastChangeTime = $time;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", length=191)
+     */
+    private $firstTime;
+
+    public function getFirstTime(){
+        return $this->firstTime;
+    }
+    public function setFirstTime($time)
+    {
+        $this->firstTime = $time;
+    }
 
     public function getrulerService()
     {
