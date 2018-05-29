@@ -2,7 +2,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<div class="container-fluid logzz">
+<div class="container-fluid reg">
     <div class="text-left col-md-5 col-md-offset-3">
         {{ form_start(form) }}
             {% if not form.vars.valid %}
@@ -17,12 +17,12 @@
             {% endif %}
         <br>
             <br>
-            Username {{ form_widget(form.username) }}
-            Email {{ form_widget(form.email) }}
-            Password{{ form_widget(form.password.first) }}
-            Repeat password {{ form_widget(form.password.second) }}
-            Address {{ form_widget(form.address) }}
-            Phone Number {{ form_widget(form.phoneNumber) }}
+            <span style="color: #FFF;">Username</span>  {{ form_widget(form.username) }}
+            <span style="color: #FFF;">Email</span> {{ form_widget(form.email) }}
+            <span style="color: #FFF;">Password</span>{{ form_widget(form.password.first) }}
+            <span style="color: #FFF;">Repeat password</span> {{ form_widget(form.password.second) }}
+            <span style="color: #FFF;">Address</span> {{ form_widget(form.address) }}
+            <span style="color: #FFF;">Phone Number</span> {{ form_widget(form.phoneNumber) }}
 
             <button type="submit" class="btn btn-primary btn-raised">Register</button>
         {{ form_end(form) }}

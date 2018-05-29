@@ -28,10 +28,11 @@
                     </div>
                     <div class="collapse navbar-collapse" id="MyNavBar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{{ path('main') }}">Home</a></li>
+                            <li><a href="{{ path('main') }}">Home</a></li>
                             <li><a href="{{ path('profile') }}">Profile</a></li>
                             <li><a href="{{ path('my_cars') }}">My Cars</a></li>
-                            <li><a href="{{ path('my_cars') }}">Users</a></li>
+                            <li><a href="{{ path('service') }}">Services</a></li>
+                            <li><a href="{{ path('serviceregistration') }}">Service registration</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ path('logout') }}">Logout&nbsp&nbsp<span class="glyphicon glyphicon-log-out"></span></a></li>
@@ -52,7 +53,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="MyNavBar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{{ path('main') }}">Home</a></li>
+                            <li><a href="{{ path('main') }}">Home</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp&nbspLogin</a></li>
@@ -120,6 +121,13 @@
             </div>
         </footer>
         <!-- End of footer -->
+        {% block javascript %}
+        <script src="{{ asset('myscript.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            });
+        </script>
+        {% endblock %}
 </body>
 </html>
 <!--    Cia perspejimas del uzpildymo lauku 

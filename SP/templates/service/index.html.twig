@@ -8,15 +8,16 @@
             .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
             .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
         </style>
-
-        <div class="main">
+        {% if services is empty%}
+        <div class="container-fluid" style="padding-top:250px; padding-bottom: 60px; ">
             {% if error is defined and error is not empty %}
                 <div>  {{ error }} </div>
             {% endif %}
             {% if success is defined and success is not empty %}
                 <div>  {{ success }} </div>
             {% endif %}
-            <table id="services">
+            <div class="text-left col-md-8 col-md-offset-2 ">
+                <table id="services">
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
@@ -37,14 +38,48 @@
                     </tr>
                 {% endfor %}
             </table>
+            </div>
         </div>
+        {% else %}
+        <div class="container-fluid padd">
+            {% if error is defined and error is not empty %}
+                <div>  {{ error }} </div>
+            {% endif %}
+            {% if success is defined and success is not empty %}
+                <div>  {{ success }} </div>
+            {% endif %}
+            <div class="text-left col-md-8 col-md-offset-2 ">
+                <table id="services">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Duration</th>
+                    <th>Discount</th>
+                </tr>
+                {% for s in services %}
+                    <tr>
+                        <td>{{ s.name }}</td>
+                        <td>{{ s.price }}</td>
+                        <td>{{ s.duration }}</td>
+                        <td>{% if s.discount is null  %}
+                                None
+                            {% else %}
+                                {{ s.discount }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+        {% endif %}
     {% endif %}
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <div class="main">
+    <div>
     {% if app.user.role == 2 %}
         {% if error is defined and error is not empty %}
             <div>  {{ error }} </div>
@@ -52,7 +87,16 @@
         {% if success is defined and success is not empty %}
             <div>  {{ success }} </div>
         {% endif %}
-        <table id="services">
+        {% if services is empty%}
+        <div class="container-fluid" style="padding-top:250px; padding-bottom: 60px;">
+            {% if error is defined and error is not empty %}
+                <div>  {{ error }} </div>
+            {% endif %}
+            {% if success is defined and success is not empty %}
+                <div>  {{ success }} </div>
+            {% endif %}
+            <div class="text-left col-md-8 col-md-offset-2 ">
+                <table id="services">
             <tr>
                 <th>Created by</th>
                 <th>Name</th>
@@ -80,8 +124,47 @@
                     <td><a href = "{{ 'servicedelete/' ~ s.id }}">Delete</a></td>
                 </tr>
             {% endfor %}
-        </table>
-        <td><a href = "{{ 'serviceregistration' }}">Create new service</a></td>
+                </table>
+            </div>
         </div>
+        {% else %}
+        <div class="container-fluid padd">
+            <div class="text-left col-md-8 col-md-offset-2 ">
+                <table id="services">
+            <tr>
+                <th>Created by</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Discount</th>
+                <th>Total price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for s in services %}
+                <tr>
+                    <td>{{ s.ruler }}</td>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.price }}</td>
+                    <td>{{ s.duration }}</td>
+                    <td>{% if s.discount is null  %}
+                            None
+                        {% else %}
+                            {{ s.discount }}
+                        {% endif %}
+                    </td>
+                    <td>{{ s.totalprice }}</td>
+                    <td><a href = "{{ 'serviceedit/' ~ s.id }}">Edit</a></td>
+                    <td><a href = "{{ 'servicedelete/' ~ s.id }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+                </table>
+                <button type="submit" class="btn btn-primary btn-raised">
+                    <a  style="color: #FFF; text-decoration: none;" href="{{ 'serviceregistration' }}"> Create new service</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     {% endif %}
 {% endblock %}

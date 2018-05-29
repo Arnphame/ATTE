@@ -9,33 +9,37 @@
 
 </style>
 
-<div class="main">
-
-    {% if error is defined and error is not empty %}
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse secondNav">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a style="color: #FFF;" href=" {{ path('carservice') }}"> {{ 'My services' }}</a></li>
+                    <li><a style="color: #FFF;" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a></li>
+                    <li><a style="color: #FFF;" href=" {{ path('change_password') }}"> {{ 'Change password' }}</a></li>
+                </ul>
+            </div>
+        </nav>
+    <div class="text-left col-md-8 col-md-offset-2 padd">
+        {% if error is defined and error is not empty %}
         <div>  {{ error }} </div>
-    {% endif %}
-    {% if success is defined and success is not empty %}
-        <div>  {{ success }} </div>
-    {% endif %}
-    <nav>
-        <div class="secondNavBar">
-            <a href=" {{ path('carservice') }}"> {{ 'My services' }}</a>
-            <a href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
-            <a href=" {{ path('change_password') }}"> {{ 'Change password' }}</a>
-        </div>
-    </nav>
+        {% endif %}
+        {% if success is defined and success is not empty %}
+            <div>  {{ success }} </div>
+        {% endif %}
 
 
-    <h1>Hello User! ✅</h1>
+        <h1>Hello User! ✅</h1>
 
 
 
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
-        <li>Your template at <code>templates/profile/index.html.twig</code></li>
-    </ul>
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code>src/Controller/ProfileController.php</code></li>
+            <li>Your template at <code>templates/profile/index.html.twig</code></li>
+        </ul>
+
+    </div>
 </div>
 
 {% endblock %}

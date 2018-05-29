@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello!{% endblock %}
+{% block title %}My Cars{% endblock %}
 
 {% block body %}
     <style>
@@ -7,45 +7,87 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <div class="main">
+    <div class="container-fluid">
         {% if error is defined and error is not empty %}
             <div>  {{ error }} </div>
         {% endif %}
         {% if success is defined and success is not empty %}
             <div>  {{ success }} </div>
         {% endif %}
-        <table id="cars">
-            <tr>
-                <th>Registration number</th>
-                <th>Make</th>
-                <th>Model</th>
+            {% if cars is empty %}
+                <div class="text-left col-md-8 col-md-offset-2"  style="padding-top:250px; padding-bottom: 60px;">
+                    <table id="services">
+                        <tr>
+                            <th>Registration number</th>
+                            <th>Make</th>
+                            <th>Model</th>
 
-                <th>Fuel type</th>
-                <th>Gearbox</th>
-                <th>Engine capacity</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>Register to service</th>
-            </tr>
-            {% for c in cars %}
-                <tr>
-                    <td>{{ c.regNr }}</td>
-                    <td>{{ c.make }}</td>
-                    <td>{{ c.model }}</td>
+                            <th>Fuel type</th>
+                            <th>Gearbox</th>
+                            <th>Engine capacity</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            <th>Register to service</th>
+                        </tr>
+                        {% for c in cars %}
+                            <tr>
+                                <td>{{ c.regNr }}</td>
+                                <td>{{ c.make }}</td>
+                                <td>{{ c.model }}</td>
 
-                    <td>{{ c.fuelType }}</td>
-                    <td>{{ c.gearbox }}</td>
-                    <td>{{ c.engineCapacity }}</td>
-                    <td><a href = "{{ 'caredit/' ~ c.id }}">Edit</a></td>
-                    <td><a href = "{{ 'cardelete/' ~ c.id }}">Delete</a></td>
-                    <td><a href = "{{ 'carservicecreate' }}">Register to service</a></td>
+                                <td>{{ c.fuelType }}</td>
+                                <td>{{ c.gearbox }}</td>
+                                <td>{{ c.engineCapacity }}</td>
+                                <td><a href = "{{ 'caredit/' ~ c.id }}">Edit</a></td>
+                                <td><a href = "{{ 'cardelete/' ~ c.id }}">Delete</a></td>
+                                <td><a href = "{{ 'carservicecreate' }}">Register to service</a></td>
 
-                </tr>
-            {% endfor %}
-        </table>
+                            </tr>
+                        {% endfor %}
+                        </table>
 
-        <button type="submit" class="btn">Add new car</button>
-        <a href="{{ path('add_car') }}"> {{ 'Add a new car' }}</a>
+                    <button type="submit" class="btn btn-primary btn-raised">
+                        <a  style="color: #FFF; text-decoration: none;" href="{{ path('add_car') }}"> {{ 'Add a new car' }}</a>
+                    </button>
 
+                </div>
+            {% else %}
+                <div class="text-left col-md-8 col-md-offset-2 padd">
+                    <table id="services">
+                        <tr>
+                            <th>Registration number</th>
+                            <th>Make</th>
+                            <th>Model</th>
+
+                            <th>Fuel type</th>
+                            <th>Gearbox</th>
+                            <th>Engine capacity</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            <th>Register to service</th>
+                        </tr>
+                        {% for c in cars %}
+                            <tr>
+                                <td>{{ c.regNr }}</td>
+                                <td>{{ c.make }}</td>
+                                <td>{{ c.model }}</td>
+
+                                <td>{{ c.fuelType }}</td>
+                                <td>{{ c.gearbox }}</td>
+                                <td>{{ c.engineCapacity }}</td>
+                                <td><a href = "{{ 'caredit/' ~ c.id }}">Edit</a></td>
+                                <td><a href = "{{ 'cardelete/' ~ c.id }}">Delete</a></td>
+                                <td><a href = "{{ 'carservicecreate' }}">Register to service</a></td>
+
+                            </tr>
+                        {% endfor %}
+                        </table>
+
+                    <button type="submit" class="btn btn-primary btn-raised">
+                        <a  style="color: #FFF; text-decoration: none;" href="{{ path('add_car') }}"> {{ 'Add a new car' }}</a>
+                    </button>
+
+                </div>
+            {% endif %}
     </div>
 {% endblock %}

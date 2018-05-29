@@ -112,6 +112,59 @@ input, select {
     color: #FFF;
 }
 
+.reg{
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    background-color: #ffa31a;
+}
+
+.padd{
+    padding-top: 50px; 
+    padding-bottom: 50px;
+}
+
+
+#services {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#services td, #services th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#services tr:nth-child(even){background-color: #f2f2f2;}
+
+#services tr:hover {background-color: #ddd;}
+
+#services th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.secondNav{
+    border-radius: 15px;
+    background-color: #ffa31a;
+    color: #FFF;
+    margin-bottom: 0;
+    padding: 1px 0;
+    font-size: 1.2em;
+    border: 0;
+}
+
+.secondNav .active a, .secondNav .active a:focus, .secondNav .active a:hover {
+    color: #FFF;
+    background-color: #ffa31a;
+}
+
+.nsecondNav li a:hover{
+    color: #FFF;
+}
 
 /* Large devices */
 @media (min-width: 1200px){
