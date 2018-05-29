@@ -25,7 +25,7 @@
                 <tr> <th>Year</th> <th> {{ carService.rulerCar.year|date('Y-m') }}</th>  </tr>
                 <tr> <th>User</th> <th>{{ carService.rulerUser }}</th></tr>
                 <tr> <th>Service</th> <th>{{ carService.rulerService }}</th></tr>
-                
+
                 <tr> <th>Last status change time</th> <th>{{ carService.lastChangeTime|date('Y-m-d H:i:s') }}</th></tr>
                 {% if mechanic != null %}
                 <tr> <th>Mechanic</th> <th>{{ mechanic }}</th></tr>
