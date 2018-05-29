@@ -1,29 +1,31 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello!{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
-<div class="main">
-{{ form_start(form) }}
-    {% if not form.vars.valid %}
-    <div class="alert">
-    {{ form_errors(form.username) }}
-    {{ form_errors(form.email) }}
-    {{ form_errors(form.password.first) }}
+<div class="container-fluid logzz">
+    <div class="text-left col-md-5 col-md-offset-3">
+        {{ form_start(form) }}
+            {% if not form.vars.valid %}
+            <div class="alert">
+            {{ form_errors(form.username) }}
+            {{ form_errors(form.email) }}
+            {{ form_errors(form.password.first) }}
+                <br>
+                 <p>Click on the "x" symbol to close the alert message.</p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+            {% endif %}
         <br>
-         <p>Click on the "x" symbol to close the alert message.</p>
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    </div>
-    {% endif %}
-<br>
-    <br>
-    Username {{ form_widget(form.username) }}
-    Email {{ form_widget(form.email) }}
-    Password{{ form_widget(form.password.first) }}
-    Repeat password {{ form_widget(form.password.second) }}
-    Address {{ form_widget(form.address) }}
-    Phone Number {{ form_widget(form.phoneNumber) }}
+            <br>
+            Username {{ form_widget(form.username) }}
+            Email {{ form_widget(form.email) }}
+            Password{{ form_widget(form.password.first) }}
+            Repeat password {{ form_widget(form.password.second) }}
+            Address {{ form_widget(form.address) }}
+            Phone Number {{ form_widget(form.phoneNumber) }}
 
-<button type="submit" class="btn">Register!</button>
-{{ form_end(form) }}
+            <button type="submit" class="btn btn-primary btn-raised">Register</button>
+        {{ form_end(form) }}
+    </div>
 </div>
 {% endblock %}

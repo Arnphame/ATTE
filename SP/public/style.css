@@ -1,42 +1,66 @@
-body {margin:0;}
-
-.navbar {
-    overflow: hidden;
+.navbar{
+    margin-bottom: 0;
+    border-radius: 0;
     background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    color: #FFF;
+    padding: 1% 0;
+    font-size: 1.2em;
+    border: 0;
 }
 
-.navbar a {
+.navbar-brand{
     float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+    min-height: 55px;
+    padding: 0 12px 5px;
 }
 
-.navbar a:hover {
-    background: #ddd;
-    color: black;
+.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+    color: #FFF;
+    background-color: #333;
 }
 
-.main {
-    padding: 45px;
-    margin-top: 60px;
+.navbar-inverse .navbar-nav li a:hover{
+    color: #D5D5D5;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+.item{
+    max-height: 700px;
+}
+
+.logo{
+    margin-top: -10px;
+    width: 160px;
+    height: 68px;
+}  
+
+.fab{
+    padding: 20px;
+    font-size: 30px;
+    color: #FFF;
+}
+
+.hours{
+    list-style-type: none;
+    text-align: left;
+}
+
+footer{
     width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
+    background-color: #333;
+    padding: 3%;
+    color: #FFF;
 }
+
+body{
+    
+}
+
+@media (max-width: 600px){
+    .carousel-caption h1{
+        font-size: 100%;
+    }
+}
+
 input, select {
     width: 100%;
     padding: 12px 20px;
@@ -80,29 +104,27 @@ input, select {
 .closebtn:hover {
     color: black;
 }
-.menufloat
-{
-    float: right;
-}
-#services {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+
+.logzz{
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    background-color: #ffa31a;
+    color: #FFF;
 }
 
-#services td, #services th {
-    border: 1px solid #ddd;
-    padding: 8px;
+
+/* Large devices */
+@media (min-width: 1200px){
+
 }
+/* Medium devices */
+@media (min-width: 992px){
 
-#services tr:nth-child(even){background-color: #f2f2f2;}
+}
+/* Small devices */
+@media (min-width: 768px){
+}
+/* Extra small devices */
+@media (max-width: 767px){
 
-#services tr:hover {background-color: #ddd;}
-
-#services th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
 }

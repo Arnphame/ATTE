@@ -1,42 +1,130 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <title>{% block title %}ATTE Car Service{% endblock %}</title>
         <meta charset="UTF-8">
-        <title>{% block title %}Hello {% endblock %}</title>
-        {% block stylesheets %} <link href="{{ asset('style.css') }}" rel="stylesheet"> {% endblock %}
-    </head>
-    <body>
-{% block header %}
-    {% if app.user %}
-    <nav>
-        <div class="navbar">
-            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
-            <a href=" {{ path('profile') }}"> {{ 'Profile' }}</a>
-            <a href=" {{ path('service') }}"> {{ 'Services' }}</a>
-            <a href=" {{ path('car_service') }}"> {{ 'Register car to service!' }}</a>
-            <a style="float:right" href=" {{ path('my_cars') }}"> {{ 'My Cars' }}</a>
-            <a style="float:right" href=" {{ path('logout') }}"> {{ 'Logout' }}</a>
-        </div>
-    </nav>
-    {% else %}
-    <nav>
-        <div class="navbar">
-            <a href=" {{ path('main') }}"> {{ 'Home' }}</a>
-            <a style="float:right" href=" {{ path('user_registration') }}"> {{ 'Registration' }}</a>
-            <a style="float:right" href=" {{ path('login') }}"> {{ 'Login' }}</a>
-        </div>
-    </nav>
-    {% endif %}
-    {% endblock %}
-        {% block body %}{% endblock %}
-    {% block footer %}
-    <footer>
-        <div class="footer">
-            <p>© ATTE semester project. All rights reserved.</p>
-        </div>
-    </footer>
-    {% endblock %}
-{% block javascripts %}
-{% endblock %}
-    </body>
+        <meta name="viewport" content="width=device-width">
+        <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="{{ asset('style.css') }}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    {% block header %}
+        {% if app.user %}
+        <!-- Beginning of Navbar -->
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavBar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img class="logo" src="{{ asset('logo_new_croped.png') }}"></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="MyNavBar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{{ path('main') }}">Home</a></li>
+                            <li><a href="{{ path('profile') }}">Profile</a></li>
+                            <li><a href="{{ path('my_cars') }}">My Cars</a></li>
+                            <li><a href="{{ path('my_cars') }}">Users</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('logout') }}">Logout&nbsp&nbsp<span class="glyphicon glyphicon-log-out"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% else %}
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavBar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img class="logo" src="{{ asset('logo_new_croped.png') }}"></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="MyNavBar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{{ path('main') }}">Home</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp&nbspLogin</a></li>
+                            <li><a href="{{ path('user_registration') }}">Register&nbsp&nbsp<span class="glyphicon glyphicon-user"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End of navbar -->
+            {% endif %}
+        {% endblock %}
+        {% block body %}
+        <!-- Here goes the main content -->
+        {% endblock %}
+        <!-- Beginning of footer -->    
+        <footer class="container-fluid text-center">
+            <div class="row">
+                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-4 col-md-offset-1 col-md-3">
+                    <h3><span>Darbo Laikas </span><i class="far fa-clock"></i></h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8">
+                            <ul class="hours">
+                                <li><h5>Darbo dienomis:</h5></li>
+                                <li><h5>Savaitgaliais:</h5></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="hours">
+                                <li><h5>10:00-19:00</h5></li>
+                                <li><h5>Nedirbame</h5></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-4 col-md-offset-1 col-md-3">
+                    <h3><span>Kontaktai </span><i class="fas fa-phone"></i></h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-6">
+                            <ul class="hours">
+                                <li><h5>Mobilus tel:</h5></li>
+                                <li><h5>Adresas:</h5></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="hours">
+                                <li><h5>+370 61515151</h5></li>
+                                <li><h5>Studentų g. 69, Kaunas</h5></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-3 text-center">
+                    <br>
+                    <br>
+                    <a class="col-xs-4 col-sm-4 col-md-offset-1 col-md-3 icon" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="col-xs-4 col-sm-4 col-md-offset-1 col-md-3 icon" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="col-xs-4 col-sm-4 col-md-offset-1 col-md-3 icon" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <hr class="col-sm-offset-1 col-sm-10">
+                <h5 class="col-sm-12 text-center" >© ATTE semester project 2018. All rights reserved.</h5>
+            </div>
+        </footer>
+        <!-- End of footer -->
+</body>
 </html>
+<!--    Cia perspejimas del uzpildymo lauku 
+<div class="bg bg-info col-md-6 col-md-offset-6" style="padding-left: 40px; padding-bottom: 20px; border-radius: 20px;">
+        <br>
+            <i class="fas fa-info-circle fa-2x"> Fields marked '*' must be filled</i>
+        <br>
+    </div> -->
